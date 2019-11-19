@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ThAmCo.Events.Data.Staffing>
+
+<h3>Staff List</h3>
+
+@{
+    if (ViewBag.NoStaff == true)
+    {
+        <h4>No staff assigned to this event</h4>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Full Name
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Staff.Firstaider)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Staff.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Staff.Firstaider)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", "Staff", new { id = item.StaffId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}

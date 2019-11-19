@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ThAmCo.Events.Data.GuestBooking>
+
+<h3>Guest List</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attended)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.FirstName) @Html.DisplayFor(modelItem => item.Customer.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attended)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Customer", new { id = item.CustomerId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
